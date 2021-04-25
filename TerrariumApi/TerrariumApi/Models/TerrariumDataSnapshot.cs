@@ -18,5 +18,7 @@ namespace TerrariumApi.Models
         public double NaturalLightLevel { get; set; }
         [JsonPropertyName("isArtificialLightOn")]
         public bool IsArtificialLightOn { get; set; }
+        [JsonPropertyName("isVentOn")]
+        public bool IsVentOn { get; set; }
     }
 }

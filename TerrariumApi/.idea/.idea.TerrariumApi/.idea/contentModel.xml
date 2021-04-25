@@ -21,6 +21,8 @@
         <e p="Migrations" t="Include">
           <e p="20210421154151_InitialCreate.cs" t="Include" />
           <e p="20210421154151_InitialCreate.Designer.cs" t="Include" />
+          <e p="20210425133655_SecondMigration.cs" t="Include" />
+          <e p="20210425133655_SecondMigration.Designer.cs" t="Include" />
           <e p="TerrariumDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

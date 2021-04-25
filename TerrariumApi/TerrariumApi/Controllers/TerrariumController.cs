@@ -82,6 +82,7 @@ namespace TerrariumApi.Controllers
                 terrariumDataToUpdate.CarbonDioxideLevel = terrariumData.CarbonDioxideLevel; 
                 terrariumDataToUpdate.NaturalLightLevel = terrariumData.NaturalLightLevel; 
                 terrariumDataToUpdate.IsArtificialLightOn = terrariumData.IsArtificialLightOn;
+                terrariumDataToUpdate.IsVentOn = terrariumData.IsVentOn;
                 
                 await _terrariumDbContext.SaveChangesAsync();
                 return terrariumDataToUpdate;
@@ -133,6 +134,27 @@ namespace TerrariumApi.Controllers
                 terrariumDataToUpdate.IsArtificialLightOn = lightState; 
                 await _terrariumDbContext.SaveChangesAsync(); 
                 return Ok(lightState);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        } 
+        
+        [HttpPatch]
+        [Route("/api/terrarium/vent/state")]
+        public async Task<ActionResult<bool>> UpdateVentStateOfTerrarium([FromQuery] bool ventState, [FromQuery] int terrariumDataId)
+        {
+            try
+            {
+                var terrariumDataToUpdate = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(td => td.Id == terrariumDataId);
+                if (terrariumDataToUpdate == null)
+                {
+                    return StatusCode(500, "not found");
+                }
+                terrariumDataToUpdate.IsArtificialLightOn = ventState; 
+                await _terrariumDbContext.SaveChangesAsync(); 
+                return Ok(ventState);
             }
             catch (Exception e)
             {
