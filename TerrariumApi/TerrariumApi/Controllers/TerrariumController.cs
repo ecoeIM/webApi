@@ -152,7 +152,7 @@ namespace TerrariumApi.Controllers
                 {
                     return StatusCode(500, "not found");
                 }
-                terrariumDataToUpdate.IsArtificialLightOn = ventState; 
+                terrariumDataToUpdate.IsVentOn = ventState; 
                 await _terrariumDbContext.SaveChangesAsync(); 
                 return Ok(ventState);
             }
