@@ -45,8 +45,6 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="Terrarium.db" t="Include" />
-        <e p="Terrarium.db-shm" t="Include" />
-        <e p="Terrarium.db-wal" t="Include" />
         <e p="TerrariumApi.csproj" t="IncludeRecursive" />
       </e>
       <e p="TerrariumApi.sln" t="IncludeFlat" />
