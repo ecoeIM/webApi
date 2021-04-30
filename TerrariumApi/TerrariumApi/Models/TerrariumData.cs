@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace TerrariumApi.Models
@@ -21,6 +22,18 @@ namespace TerrariumApi.Models
         
         [JsonPropertyName("isVentOn")]
         public bool IsVentOn { get; set; }
+        
+        [JsonPropertyName("temperatureRecords")]
+        public List<TemperatureRecord> TemperatureRecords { get; set; }
+        
+        [JsonPropertyName("carbonDioxideLevel")]
+        public List<CarbonDioxideLevelRecord> CarbonDioxideLevelRecords { get; set; }
+        
+        [JsonPropertyName("humidityLevelRecords")]
+        public List<HumidityLevelRecord> HumidityLevelRecords { get; set; }
+        
+        [JsonPropertyName("naturalLightLevel")]
+        public IList<NaturalLightLevelRecord> NaturalLightLevelRecords { get; set; }
         
     }
 }

@@ -23,12 +23,22 @@
           <e p="20210421154151_InitialCreate.Designer.cs" t="Include" />
           <e p="20210425133655_SecondMigration.cs" t="Include" />
           <e p="20210425133655_SecondMigration.Designer.cs" t="Include" />
+          <e p="20210430151319_AddListsOfRecords.cs" t="Include" />
+          <e p="20210430151319_AddListsOfRecords.Designer.cs" t="Include" />
+          <e p="20210430151940_fix.cs" t="Include" />
+          <e p="20210430151940_fix.Designer.cs" t="Include" />
+          <e p="20210430161359_fix_02.cs" t="Include" />
+          <e p="20210430161359_fix_02.Designer.cs" t="Include" />
           <e p="TerrariumDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
+          <e p="CarbonDioxideLevelRecord.cs" t="Include" />
+          <e p="HumidityLevelRecord.cs" t="Include" />
+          <e p="NaturalLightLevelRecord.cs" t="Include" />
           <e p="Profile.cs" t="Include" />
           <e p="ProfileData.cs" t="Include" />
           <e p="ScheduledTask.cs" t="Include" />
+          <e p="TemperatureRecord.cs" t="Include" />
           <e p="Terrarium.cs" t="Include" />
           <e p="TerrariumData.cs" t="Include" />
           <e p="TerrariumDataSnapshot.cs" t="Include" />
@@ -47,6 +57,8 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="Terrarium.db" t="Include" />
+        <e p="Terrarium.db-shm" t="Include" />
+        <e p="Terrarium.db-wal" t="Include" />
         <e p="TerrariumApi.csproj" t="IncludeRecursive" />
       </e>
       <e p="TerrariumApi.sln" t="IncludeFlat" />

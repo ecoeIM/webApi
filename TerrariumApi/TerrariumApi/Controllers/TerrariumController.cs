@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -161,6 +162,168 @@ namespace TerrariumApi.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/api/terrarium/temp/records")]
+        public async Task<ActionResult<List<TemperatureRecord>>> GetTemperatureRecords([FromQuery] int terrariumDataId)
+        {
+            try
+            {
+                var listOfRecords =
+                  await  _terrariumDbContext.TemperatureRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
+                if (listOfRecords == null)
+                {
+                    return StatusCode(500, "not found any records");
+                }
+
+                return Ok(listOfRecords);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }        
+        [HttpGet]
+        [Route("/api/terrarium/hum/records")]
+        public async Task<ActionResult<List<TemperatureRecord>>> GetHumidityLevelRecords([FromQuery] int terrariumDataId)
+        {
+            try
+            {
+                var listOfRecords =
+                  await  _terrariumDbContext.HumidityLevelRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
+                if (listOfRecords == null)
+                {
+                    return StatusCode(500, "not found any records");
+                }
+
+                return Ok(listOfRecords);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }  
+        [HttpGet]
+        [Route("/api/terrarium/carbon/records")]
+        public async Task<ActionResult<List<TemperatureRecord>>> GetCarbonDioxideLevelRecordRecords([FromQuery] int terrariumDataId)
+        {
+            try
+            {
+                var listOfRecords =
+                  await  _terrariumDbContext.CarbonDioxideLevelRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
+                if (listOfRecords == null)
+                {
+                    return StatusCode(500, "not found any records");
+                }
+
+                return Ok(listOfRecords);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpGet]
+        [Route("/api/terrarium/light/records")]
+        public async Task<ActionResult<List<TemperatureRecord>>> GetNaturalLightRecords([FromQuery] int terrariumDataId)
+        {
+            try
+            {
+                var listOfRecords =
+                  await  _terrariumDbContext.NaturalLightLevelRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
+                if (listOfRecords == null)
+                {
+                    return StatusCode(500, "not found any records");
+                }
+
+                return Ok(listOfRecords);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpPost]
+        [Route("/api/terrarium/temp/records")]
+        public async Task<ActionResult<List<TemperatureRecord>>> PostTemperatureRecords([FromBody] TemperatureRecord temperatureRecord)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var result = await _terrariumDbContext.TemperatureRecords.AddAsync(temperatureRecord);
+                await _terrariumDbContext.SaveChangesAsync();
+                return Created(result.Entity.DateTime.ToShortDateString(),result.Entity);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpPost]
+        [Route("/api/terrarium/hum/records")]
+        public async Task<ActionResult<List<HumidityLevelRecord>>> PostHumidityRecords([FromBody] HumidityLevelRecord humidityRecord)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                var result = await _terrariumDbContext.HumidityLevelRecords.AddAsync(humidityRecord);
+                await _terrariumDbContext.SaveChangesAsync();
+                return Created(result.Entity.DateTime.ToShortDateString(),result.Entity);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpPost]
+        [Route("/api/terrarium/carbon/records")]
+        public async Task<ActionResult<List<CarbonDioxideLevelRecord>>> PostCarbonDioxideLevelRecords([FromBody] CarbonDioxideLevelRecord carbonDioxideLevelRecord)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                var result = await _terrariumDbContext.CarbonDioxideLevelRecords.AddAsync(carbonDioxideLevelRecord);
+                await _terrariumDbContext.SaveChangesAsync();
+                return Created(result.Entity.DateTime.ToShortDateString(),result.Entity);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        } 
+        [HttpPost]
+        [Route("/api/terrarium/light/records")]
+        public async Task<ActionResult<List<NaturalLightLevelRecord>>> PostCarbonDioxideLevelRecords([FromBody] NaturalLightLevelRecord naturalLightLevelRecord)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                var result = await _terrariumDbContext.NaturalLightLevelRecords.AddAsync(naturalLightLevelRecord);
+                await _terrariumDbContext.SaveChangesAsync();
+                return Created(result.Entity.DateTime.ToShortDateString(),result.Entity);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        
+        
     }
     
     

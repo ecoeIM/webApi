@@ -11,6 +11,10 @@ namespace TerrariumApi.DataAccess
         public DbSet<ScheduledTask> ScheduledTasksSet { get; set; }
         public DbSet<Profile> ProfileSet { get; set; }
         public DbSet<ProfileData> ProfileDataSet { get; set; }
+        public DbSet<TemperatureRecord> TemperatureRecords { get; set; }
+        public DbSet<NaturalLightLevelRecord> NaturalLightLevelRecords { get; set; }
+        public DbSet<HumidityLevelRecord> HumidityLevelRecords { get; set; }
+        public DbSet<CarbonDioxideLevelRecord> CarbonDioxideLevelRecords { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
