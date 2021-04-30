@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace TerrariumApi.Models
@@ -16,5 +17,9 @@ namespace TerrariumApi.Models
         public int TerrariumDataSnapshotId { get; set; }
         [JsonPropertyName("terrariumId")] 
         public int TerrariumId { get; set; }
+
+        [JsonPropertyName("timeStampOfCreation")] public DateTime TimeStampOfCreation { get; set; }
+        [JsonPropertyName("timeStampOfExecution")] public DateTime TimeStampOfExecution { get; set; }
+
     }
 }
