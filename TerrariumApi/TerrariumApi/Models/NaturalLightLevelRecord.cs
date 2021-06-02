@@ -15,5 +15,6 @@ namespace TerrariumApi.Models
         public DateTime DateTime { get; set; }
         [JsonPropertyName("terrariumDataId")]
         public int TerrariumDataId { get; set; }
+       
     }
 }

@@ -84,7 +84,7 @@ namespace TerrariumApi.Controllers
                 terrariumDataToUpdate.NaturalLightLevel = terrariumData.NaturalLightLevel; 
                 terrariumDataToUpdate.IsArtificialLightOn = terrariumData.IsArtificialLightOn;
                 terrariumDataToUpdate.IsVentOn = terrariumData.IsVentOn;
-                
+
                 await _terrariumDbContext.SaveChangesAsync();
                 return terrariumDataToUpdate;
             }
@@ -169,14 +169,9 @@ namespace TerrariumApi.Controllers
         {
             try
             {
-                var listOfRecords =
-                  await  _terrariumDbContext.TemperatureRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
-                if (listOfRecords == null)
-                {
-                    return StatusCode(500, "not found any records");
-                }
-
-                return Ok(listOfRecords);
+                var records = await
+                    _terrariumDbContext.TemperatureRecords.Where(record => record.TerrariumDataId == terrariumDataId).ToListAsync();
+                return records;
             }
             catch (Exception e)
             {
@@ -185,18 +180,13 @@ namespace TerrariumApi.Controllers
         }        
         [HttpGet]
         [Route("/api/terrarium/hum/records")]
-        public async Task<ActionResult<List<TemperatureRecord>>> GetHumidityLevelRecords([FromQuery] int terrariumDataId)
+        public async Task<ActionResult<List<HumidityLevelRecord>>> GetHumidityLevelRecords([FromQuery] int terrariumDataId)
         {
             try
             {
-                var listOfRecords =
-                  await  _terrariumDbContext.HumidityLevelRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
-                if (listOfRecords == null)
-                {
-                    return StatusCode(500, "not found any records");
-                }
-
-                return Ok(listOfRecords);
+                var records =await 
+                    _terrariumDbContext.HumidityLevelRecords.Where(record => record.TerrariumDataId == terrariumDataId).ToListAsync();
+                return records;
             }
             catch (Exception e)
             {
@@ -205,18 +195,13 @@ namespace TerrariumApi.Controllers
         }  
         [HttpGet]
         [Route("/api/terrarium/carbon/records")]
-        public async Task<ActionResult<List<TemperatureRecord>>> GetCarbonDioxideLevelRecordRecords([FromQuery] int terrariumDataId)
+        public async Task<ActionResult<List<CarbonDioxideLevelRecord>>> GetCarbonDioxideLevelRecordRecords([FromQuery] int terrariumDataId)
         {
             try
             {
-                var listOfRecords =
-                  await  _terrariumDbContext.CarbonDioxideLevelRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
-                if (listOfRecords == null)
-                {
-                    return StatusCode(500, "not found any records");
-                }
-
-                return Ok(listOfRecords);
+                var records =
+                    await _terrariumDbContext.CarbonDioxideLevelRecords.Where(record => record.TerrariumDataId == terrariumDataId).ToListAsync();
+                return records;
             }
             catch (Exception e)
             {
@@ -225,18 +210,14 @@ namespace TerrariumApi.Controllers
         }
         [HttpGet]
         [Route("/api/terrarium/light/records")]
-        public async Task<ActionResult<List<TemperatureRecord>>> GetNaturalLightRecords([FromQuery] int terrariumDataId)
+        public async Task<ActionResult<List<NaturalLightLevelRecord>>> GetNaturalLightRecords([FromQuery] int terrariumDataId)
         {
             try
             {
-                var listOfRecords =
-                  await  _terrariumDbContext.NaturalLightLevelRecords.Where(r => r.TerrariumDataId == terrariumDataId).ToListAsync();
-                if (listOfRecords == null)
-                {
-                    return StatusCode(500, "not found any records");
-                }
-
-                return Ok(listOfRecords);
+                var records =
+                    await _terrariumDbContext.NaturalLightLevelRecords.Where(record =>
+                        record.TerrariumDataId == terrariumDataId).ToListAsync();
+                return records;
             }
             catch (Exception e)
             {
@@ -322,8 +303,95 @@ namespace TerrariumApi.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/api/terrarium/temperature/period/last")]
+        public async Task<ActionResult<double>> GetLastTemperature()
+        {
+            try
+            {
+                var terrariumData = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(t => t.Id == 1);
+                return terrariumData.Temperature;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        } 
+        [HttpGet]
+        [Route("/api/terrarium/humidity/period/last")]
+        public async Task<ActionResult<double>> GetLastHumidity()
+        {
+            try
+            {
+                var terrariumData = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(t => t.Id == 1);
+                return terrariumData.HumidityLevel;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }    
         
+        [HttpGet]
+        [Route("/api/terrarium/co2/period/last")]
+        public async Task<ActionResult<double>> GetLastCo2()
+        {
+            try
+            {
+                var terrariumData = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(t => t.Id == 1);
+                return terrariumData.CarbonDioxideLevel;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpGet]
+        [Route("/api/terrarium/light/period/last")]
+        public async Task<ActionResult<double>> GetLastLight()
+        {
+            try
+            {
+                var terrariumData = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(t => t.Id == 1);
+                return terrariumData.NaturalLightLevel;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        } 
+        [HttpGet]
+        [Route("/api/terrarium/artLight/state")]
+        public async Task<ActionResult<bool>> GetArtificialLightState()
+        {
+            try
+            {
+                var terrariumData = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(t => t.Id == 1);
+                return terrariumData.IsArtificialLightOn;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        } 
+        [HttpGet]
+        [Route("/api/terrarium/vent/state")]
+        public async Task<ActionResult<bool>> GetVentState()
+        {
+            try
+            {
+                var terrariumData = await _terrariumDbContext.TerrariumDataSet.FirstOrDefaultAsync(t => t.Id == 1);
+                return terrariumData.IsVentOn;
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
         
+
+
     }
     
     

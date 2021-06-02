@@ -26,13 +26,13 @@ namespace TerrariumApi.Models
         [JsonPropertyName("temperatureRecords")]
         public List<TemperatureRecord> TemperatureRecords { get; set; }
         
-        [JsonPropertyName("carbonDioxideLevel")]
+        [JsonPropertyName("carbonDioxideLevelRecords")]
         public List<CarbonDioxideLevelRecord> CarbonDioxideLevelRecords { get; set; }
         
         [JsonPropertyName("humidityLevelRecords")]
         public List<HumidityLevelRecord> HumidityLevelRecords { get; set; }
         
-        [JsonPropertyName("naturalLightLevel")]
+        [JsonPropertyName("naturalLightLevelRecords")]
         public IList<NaturalLightLevelRecord> NaturalLightLevelRecords { get; set; }
         
     }

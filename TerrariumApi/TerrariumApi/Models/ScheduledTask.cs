@@ -9,17 +9,15 @@ namespace TerrariumApi.Models
         [Key]
         [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonPropertyName("repeated")]
-        public bool Repeated { get; set; }
-        [JsonPropertyName("terrariumDataSnapshot")]
-        public TerrariumDataSnapshot TerrariumDataSnapshot { get; set; }
-        [JsonPropertyName("terrariumDataSnapshotId")]
-        public int TerrariumDataSnapshotId { get; set; }
-        [JsonPropertyName("terrariumId")] 
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+        [JsonPropertyName("toggleLight")]
+        public bool ToggleLight { get; set; }
+        [JsonPropertyName("toggleVent")]
+        public bool ToggleVent { get; set; }
+        [JsonPropertyName("timeStamp")]
+        public string TimeStamp { get; set; }
+        [JsonPropertyName("terrariumId")]
         public int TerrariumId { get; set; }
-
-        [JsonPropertyName("timeStampOfCreation")] public DateTime TimeStampOfCreation { get; set; }
-        [JsonPropertyName("timeStampOfExecution")] public DateTime TimeStampOfExecution { get; set; }
-
     }
 }

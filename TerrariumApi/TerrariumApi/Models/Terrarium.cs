@@ -14,11 +14,15 @@ namespace TerrariumApi.Models
         public string TerrariumName { get; set; }
         [JsonPropertyName("animalName")]
         public string AnimalName { get; set; }
+        [JsonPropertyName("activeProfileId")]
+        public int ActiveProfileId { get; set; }
         [JsonPropertyName("scheduledTaskList")]
         public List<ScheduledTask> ScheduledTaskList { get; set; }
         [JsonPropertyName("terrariumData")]
         public TerrariumData TerrariumData { get; set; }
-        [JsonPropertyName("userId")]
-        public int UserId { get; set; }
+        
+        public List<User> Users { get; set; }
+        [JsonPropertyName("profiles")]
+        public List<Profile> Profiles { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace TerrariumApi.Models
@@ -9,11 +8,9 @@ namespace TerrariumApi.Models
         [Key]
         [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonPropertyName("username")]
-        public string Username { get; set; }
-        [JsonPropertyName("password")]
-        public string Password { get; set; }
-        [JsonPropertyName("terrariumList")]
-        public List<Terrarium> TerrariumList { get; set; }
+        [JsonPropertyName("uid")]
+        public string UId { get; set; }
+        [JsonPropertyName("terrariumId")]
+        public int TerrariumId { get; set; }
     }
 }

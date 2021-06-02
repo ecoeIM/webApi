@@ -10,7 +10,6 @@ namespace TerrariumApi.DataAccess
         public DbSet<User> UserSet { get; set; }
         public DbSet<ScheduledTask> ScheduledTasksSet { get; set; }
         public DbSet<Profile> ProfileSet { get; set; }
-        public DbSet<ProfileData> ProfileDataSet { get; set; }
         public DbSet<TemperatureRecord> TemperatureRecords { get; set; }
         public DbSet<NaturalLightLevelRecord> NaturalLightLevelRecords { get; set; }
         public DbSet<HumidityLevelRecord> HumidityLevelRecords { get; set; }

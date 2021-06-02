@@ -21,7 +21,7 @@ namespace TerrariumApi.Controllers
         }
 
         [HttpPost]
-        [Route("/api/task/post")]
+        [Route("/api/terrarium/tasks")]
         public async Task<ActionResult<ScheduledTask>> PostScheduledTask([FromBody] ScheduledTask scheduledTask)
         {
             try
@@ -32,8 +32,8 @@ namespace TerrariumApi.Controllers
                 }
                 var scheduledTaskWithProperId = await _terrariumDbContext.ScheduledTasksSet.AddAsync(scheduledTask);
                 await _terrariumDbContext.SaveChangesAsync();
-                return Created(scheduledTaskWithProperId.Entity.TimeStampOfCreation.ToShortDateString(),
-                    scheduledTaskWithProperId);
+                return Created(scheduledTaskWithProperId.Entity.Id.ToString(),
+                    scheduledTaskWithProperId.Entity);
             }
             catch (Exception e)
             {
@@ -42,18 +42,14 @@ namespace TerrariumApi.Controllers
         }   
         
         [HttpGet]
-        [Route("/api/task/post")]
+        [Route("/api/terrarium/tasks")]
         public async Task<ActionResult<List<ScheduledTask>>> GetScheduledTasks([FromQuery] int terrariumId)
         {
             try
             {
-                var listToReturn = await _terrariumDbContext.ScheduledTasksSet.Where(t => t.TerrariumId == terrariumId)
+                var tasks = await _terrariumDbContext.ScheduledTasksSet.Where(t => t.TerrariumId == terrariumId)
                     .ToListAsync();
-                if (listToReturn == null)
-                {
-                    return StatusCode(500, "not found");
-                }
-                return listToReturn;
+                return Ok(tasks);
             }
             catch (Exception e)
             {
@@ -62,25 +58,25 @@ namespace TerrariumApi.Controllers
         }
         
         [HttpPatch]
-        [Route("/api/task/post")]
+        [Route("/api/terrarium/tasks")]
         public async Task<ActionResult<ScheduledTask>> GetScheduledTasks([FromBody] ScheduledTask scheduledTask)
         {
             try
             {
                 var taskToUpdate =
                     await _terrariumDbContext.ScheduledTasksSet.FirstOrDefaultAsync(t => t.Id == scheduledTask.Id);
-                if (taskToUpdate == null)
+                
+                if (taskToUpdate != null)
                 {
-                    return StatusCode(500, "not found");
+                    taskToUpdate.Name = scheduledTask.Name;
+                    taskToUpdate.ToggleLight = scheduledTask.ToggleLight;
+                    taskToUpdate.ToggleVent = scheduledTask.ToggleVent;
+                    taskToUpdate.TimeStamp = scheduledTask.TimeStamp;
+                    await _terrariumDbContext.SaveChangesAsync();
+                    return Ok(taskToUpdate);
+                    
                 }
-
-                taskToUpdate.Repeated = scheduledTask.Repeated;
-                taskToUpdate.TimeStampOfCreation = scheduledTask.TimeStampOfCreation;
-                taskToUpdate.TimeStampOfExecution = scheduledTask.TimeStampOfExecution;
-                taskToUpdate.TerrariumDataSnapshot = scheduledTask.TerrariumDataSnapshot;
-
-                await _terrariumDbContext.SaveChangesAsync();
-                return Ok(taskToUpdate);
+                return StatusCode(500, "not found");
             }
             catch (Exception e)
             {
@@ -89,8 +85,8 @@ namespace TerrariumApi.Controllers
         }
         
         [HttpDelete]
-        [Route("/api/task/post")]
-        public async Task<ActionResult<bool>> DeleteScheduledTasks([FromQuery] int id)
+        [Route("/api/terrarium/tasks")]
+        public async Task<ActionResult> DeleteScheduledTasks([FromQuery] int id)
         {
             try
             {
@@ -100,14 +96,13 @@ namespace TerrariumApi.Controllers
                     return StatusCode(500, "not found");
                 }
                 _terrariumDbContext.ScheduledTasksSet.Remove(entityToRemove);
-                return Ok(true);
+                await _terrariumDbContext.SaveChangesAsync();
+                return Ok();
             }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
         }
-        
-        
     }
 }
