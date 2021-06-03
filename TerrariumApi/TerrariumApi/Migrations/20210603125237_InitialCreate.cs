@@ -33,7 +33,7 @@ namespace TerrariumApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Value = table.Column<double>(type: "REAL", nullable: false),
                     DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: true)
+                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumDataId,
                         principalTable: "TerrariumDataSet",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -54,7 +54,7 @@ namespace TerrariumApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Value = table.Column<double>(type: "REAL", nullable: false),
                     DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: true)
+                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,7 +64,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumDataId,
                         principalTable: "TerrariumDataSet",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,7 +75,7 @@ namespace TerrariumApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Value = table.Column<double>(type: "REAL", nullable: false),
                     DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: true)
+                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,7 +85,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumDataId,
                         principalTable: "TerrariumDataSet",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +96,7 @@ namespace TerrariumApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Value = table.Column<double>(type: "REAL", nullable: false),
                     DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: true)
+                    TerrariumDataId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,7 +106,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumDataId,
                         principalTable: "TerrariumDataSet",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,7 +146,7 @@ namespace TerrariumApi.Migrations
                     MaxCo2 = table.Column<int>(type: "INTEGER", nullable: false),
                     MinLight = table.Column<int>(type: "INTEGER", nullable: false),
                     MaxLight = table.Column<int>(type: "INTEGER", nullable: false),
-                    TerrariumId = table.Column<int>(type: "INTEGER", nullable: true)
+                    TerrariumId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -156,7 +156,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumId,
                         principalTable: "TerrariumSet",
                         principalColumn: "TerrariumId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,8 +168,8 @@ namespace TerrariumApi.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     ToggleLight = table.Column<bool>(type: "INTEGER", nullable: false),
                     ToggleVent = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TimeStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    TerrariumId = table.Column<int>(type: "INTEGER", nullable: true)
+                    DateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TerrariumId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,7 +179,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumId,
                         principalTable: "TerrariumSet",
                         principalColumn: "TerrariumId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -189,7 +189,7 @@ namespace TerrariumApi.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UId = table.Column<string>(type: "TEXT", nullable: true),
-                    TerrariumId = table.Column<int>(type: "INTEGER", nullable: true)
+                    TerrariumId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -199,7 +199,7 @@ namespace TerrariumApi.Migrations
                         column: x => x.TerrariumId,
                         principalTable: "TerrariumSet",
                         principalColumn: "TerrariumId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

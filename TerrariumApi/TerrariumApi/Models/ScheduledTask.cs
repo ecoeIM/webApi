@@ -15,8 +15,8 @@ namespace TerrariumApi.Models
         public bool ToggleLight { get; set; }
         [JsonPropertyName("toggleVent")]
         public bool ToggleVent { get; set; }
-        [JsonPropertyName("timeStamp")]
-        public string TimeStamp { get; set; }
+        [JsonPropertyName("dateTime")]
+        public DateTime DateTime { get; set; }
         [JsonPropertyName("terrariumId")]
         public int TerrariumId { get; set; }
     }

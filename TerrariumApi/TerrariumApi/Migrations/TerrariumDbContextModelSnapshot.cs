@@ -25,7 +25,7 @@ namespace TerrariumApi.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TerrariumDataId")
+                    b.Property<int>("TerrariumDataId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Value")
@@ -47,7 +47,7 @@ namespace TerrariumApi.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TerrariumDataId")
+                    b.Property<int>("TerrariumDataId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Value")
@@ -69,7 +69,7 @@ namespace TerrariumApi.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TerrariumDataId")
+                    b.Property<int>("TerrariumDataId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Value")
@@ -115,7 +115,7 @@ namespace TerrariumApi.Migrations
                     b.Property<string>("ProfileName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TerrariumId")
+                    b.Property<int>("TerrariumId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -131,14 +131,14 @@ namespace TerrariumApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TerrariumId")
+                    b.Property<int>("TerrariumId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("TimeStamp")
-                        .HasColumnType("TEXT");
 
                     b.Property<bool>("ToggleLight")
                         .HasColumnType("INTEGER");
@@ -162,7 +162,7 @@ namespace TerrariumApi.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TerrariumDataId")
+                    b.Property<int>("TerrariumDataId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Value")
@@ -236,7 +236,7 @@ namespace TerrariumApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TerrariumId")
+                    b.Property<int>("TerrariumId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UId")
@@ -253,42 +253,54 @@ namespace TerrariumApi.Migrations
                 {
                     b.HasOne("TerrariumApi.Models.TerrariumData", null)
                         .WithMany("CarbonDioxideLevelRecords")
-                        .HasForeignKey("TerrariumDataId");
+                        .HasForeignKey("TerrariumDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.HumidityLevelRecord", b =>
                 {
                     b.HasOne("TerrariumApi.Models.TerrariumData", null)
                         .WithMany("HumidityLevelRecords")
-                        .HasForeignKey("TerrariumDataId");
+                        .HasForeignKey("TerrariumDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.NaturalLightLevelRecord", b =>
                 {
                     b.HasOne("TerrariumApi.Models.TerrariumData", null)
                         .WithMany("NaturalLightLevelRecords")
-                        .HasForeignKey("TerrariumDataId");
+                        .HasForeignKey("TerrariumDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.Profile", b =>
                 {
                     b.HasOne("TerrariumApi.Models.Terrarium", null)
                         .WithMany("Profiles")
-                        .HasForeignKey("TerrariumId");
+                        .HasForeignKey("TerrariumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.ScheduledTask", b =>
                 {
                     b.HasOne("TerrariumApi.Models.Terrarium", null)
                         .WithMany("ScheduledTaskList")
-                        .HasForeignKey("TerrariumId");
+                        .HasForeignKey("TerrariumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.TemperatureRecord", b =>
                 {
                     b.HasOne("TerrariumApi.Models.TerrariumData", null)
                         .WithMany("TemperatureRecords")
-                        .HasForeignKey("TerrariumDataId");
+                        .HasForeignKey("TerrariumDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.Terrarium", b =>
@@ -304,7 +316,9 @@ namespace TerrariumApi.Migrations
                 {
                     b.HasOne("TerrariumApi.Models.Terrarium", null)
                         .WithMany("Users")
-                        .HasForeignKey("TerrariumId");
+                        .HasForeignKey("TerrariumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TerrariumApi.Models.Terrarium", b =>

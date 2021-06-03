@@ -71,7 +71,7 @@ namespace TerrariumApi.Controllers
                     taskToUpdate.Name = scheduledTask.Name;
                     taskToUpdate.ToggleLight = scheduledTask.ToggleLight;
                     taskToUpdate.ToggleVent = scheduledTask.ToggleVent;
-                    taskToUpdate.TimeStamp = scheduledTask.TimeStamp;
+                    taskToUpdate.DateTime = scheduledTask.DateTime;
                     await _terrariumDbContext.SaveChangesAsync();
                     return Ok(taskToUpdate);
                     
