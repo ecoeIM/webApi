@@ -67,14 +67,13 @@ namespace TerrariumApi.Controllers
                 if (profileToUpdate != null)
                 {
                     profileToUpdate.MaxCo2 = profile.MaxCo2;
-                    profileToUpdate.MaxHumid = profile.MaxCo2;
-                    profileToUpdate.MaxLight = profile.MaxCo2;
-                    profileToUpdate.MaxLight = profile.MaxCo2;
-                    profileToUpdate.MaxTemp = profile.MaxCo2;
-                    profileToUpdate.MinCo2 = profile.MaxCo2;
-                    profileToUpdate.MinHumid = profile.MaxCo2;
-                    profileToUpdate.MinLight = profile.MaxCo2;
-                    profileToUpdate.MinTemp = profile.MaxCo2;
+                    profileToUpdate.MaxHumid = profile.MaxHumid;
+                    profileToUpdate.MaxLight = profile.MaxLight;
+                    profileToUpdate.MaxTemp = profile.MaxTemp;
+                    profileToUpdate.MinCo2 = profile.MinCo2;
+                    profileToUpdate.MinHumid = profile.MinHumid;
+                    profileToUpdate.MinLight = profile.MinLight;
+                    profileToUpdate.MinTemp = profile.MinTemp;
                     profileToUpdate.ProfileName = profile.ProfileName;
 
                     await _terrariumDbContext.SaveChangesAsync();
