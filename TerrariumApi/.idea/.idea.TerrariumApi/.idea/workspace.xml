@@ -23,23 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803bcd1a-0849-45ed-a73b-dda15659d122" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrariumApi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrariumApi/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TerrariumApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TerrariumApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Controllers/TaskController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/Controllers/TaskController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Migrations/20210602181046_InitialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Migrations/20210602181046_InitialCreate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Migrations/TerrariumDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/Migrations/TerrariumDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Models/ScheduledTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/Models/ScheduledTask.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TerrariumApi/Terrarium.db" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/Terrarium.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Terrarium.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/Terrarium.db-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/Terrarium.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/Terrarium.db-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/bin/Debug/net5.0/TerrariumApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/bin/Debug/net5.0/TerrariumApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/bin/Debug/net5.0/TerrariumApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/bin/Debug/net5.0/TerrariumApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/bin/Debug/net5.0/ref/TerrariumApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/bin/Debug/net5.0/ref/TerrariumApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/TerrariumApi.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/TerrariumApi.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/TerrariumApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/TerrariumApi.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/TerrariumApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/TerrariumApi.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/ref/TerrariumApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TerrariumApi/obj/Debug/net5.0/ref/TerrariumApi.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
